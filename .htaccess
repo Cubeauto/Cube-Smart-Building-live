@@ -1,0 +1,10 @@
+# Single-page app routing: serve index.html for any path that isn't a real file/folder
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.html$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/api/
+RewriteRule . /index.html [L]
+DirectoryIndex index.html
